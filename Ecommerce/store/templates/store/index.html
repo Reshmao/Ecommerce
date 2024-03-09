@@ -1,0 +1,33 @@
+{% extends 'Store/base.html' %}
+{% load static %}
+{% block title %}
+Ecommerce|Online Shopping
+{%endblock title%}
+
+
+
+
+
+{% block content %}
+
+<div class="container">
+    <div class="container h4 pb-2 mb-4 text-danger text-center border-bottom border-danger my-3">
+        Collections
+    </div>
+
+    <div class="container mt-3">
+        <div class="row text-center ms-4">
+            {% for i in categories %}
+                <a href="{% url 'category' i.id%}" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 d-flex align-items-stretch pb-3">
+                    <div class="card border-2" style="width: 18rem;">
+                        <img src="{{ i.image.url }}" class="card-img-top" alt="..." style="height : 200px;">
+                        <div class="card-body">
+                            <div class="card-text">{{ i.name }}</div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

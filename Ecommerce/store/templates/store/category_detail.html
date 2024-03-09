@@ -1,0 +1,49 @@
+{% extends 'Store/base.html' %}
+{% load static %}
+{% block title %}
+Ecommerce|Product
+{%endblock title%}
+
+
+{% block content %}
+
+<style>
+    /* Custom styles for the carousel on the category page */
+    .carousel-inner {
+        max-height: 300px;
+        /* Adjust the width as needed */
+        margin: 0 auto;
+    }
+
+
+    /* Add any other category-specific styles as needed */
+</style>
+
+    <div class="container">
+       
+        <div class=" container h4 pb-2 mb-4 text-danger text-center border-bottom border-danger my-3">
+            {{name.name}}
+        </div>        
+        <div class="container mt-3">            
+            <div class="row text-center ms-4">            
+                {% for product in data %}                
+                <div class="col-12 col-sm-12 col-md-2 col-lg-4 col-xl-3 d-flex align-items-stretch pb-3">
+                    <div class="card md-3 mb-4 border-2" style="width: 18rem;">
+                        <a href="{% url 'product' product.id%}">
+                        <img src="{{ product.product_image.url }}" class="card-img-top" alt="..." style="height : 300px;" width="100px">
+                        <div class="card-body">
+                            <div class="card-text">{{ product.name }}</div>
+                        </a>
+
+                        <div class="card-body">
+                            <p><span class="float-start">MRP:<s>{{ product.original_price }}</s></span>
+                            <span class="float-end"><del>&#2352;</del>{{ product.selling_price }}</span></p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+{% endblock content %}
